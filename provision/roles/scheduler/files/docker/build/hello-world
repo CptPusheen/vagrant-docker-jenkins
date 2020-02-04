@@ -1,0 +1,2 @@
+*/5 * * * *     /usr/java/openjdk-13/bin/java -jar /jenkins-cli.jar -s http://jenkins-server:8080/ -auth smartbear:password create-job hello-world-$(shuf -i 1000000-9999999 -n 1) < /hello-world.xml
+

@@ -1,0 +1,17 @@
+version: '3'
+services:
+  jenkins-scheduler:
+    image: jenkins-scheduler
+    build: build
+    container_name: jenkins-scheduler
+    hostname: jenkins-scheduler
+    restart: unless-stopped
+    healthcheck:
+       test: "exit 0"
+    networks:
+     - docker_shared
+
+networks:
+  docker_shared:
+    external: true
+

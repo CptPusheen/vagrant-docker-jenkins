@@ -1,0 +1,27 @@
+version: '3'
+services:
+  jenkins-server:
+    image: bitnami/jenkins:latest
+    container_name: jenkins-server
+    hostname: jenkins-server
+    restart: unless-stopped
+    healthcheck:
+       test: "exit 0"
+    ports:
+     - 8080:8080
+    environment:
+     - JENKINS_USERNAME=smartbear
+     - JENKINS_PASSWORD=password
+     - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    volumes:
+     - jenkins_data:/bitnami
+    networks:
+     - shared
+
+volumes:
+  jenkins_data:
+    driver: local
+
+networks:
+  shared:
+    driver: bridge
